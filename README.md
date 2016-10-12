@@ -1,15 +1,14 @@
 ## React-pulldown-mobile
 一个简单易用的React下拉组件
 
-<font color=#ff0000 size=14>还在调试中，请勿使用</font>
-
 ### 使用示例
 
-```
-import React, { Component } from 'react'
+```javascript
+import React from 'react'
+import ReactDOM from 'react-dom'
 import PullDown from 'react-pulldown-mobile'
 
-class PullDownDemo extends Component {
+class PullDownDemo extends React.Component {
 
   render() {
 
@@ -25,9 +24,9 @@ class PullDownDemo extends Component {
           }}
         >
           <div className="contents">
-		  {new Array(30).fill('').map((v, i) => {
-		  	return <div key={i} className="item"></div>
-		  })}
+          {new Array(30).fill('').map((v, i) => {
+            return <div key={i} className="item"></div>
+          })}
           </div>
         </PullDown>
       </div>
@@ -37,12 +36,12 @@ class PullDownDemo extends Component {
 
 }
 
-ReactDOM.render(<PullDownDemo />, document.querySelector('#root'));
+ReactDOM.render(<PullDownDemo />, document.querySelector('#root'))
 ```
 
-###### 默认情况下，.container元素作为下拉容器，需要指定高度并设置overflow为auto或者scroll;
+###### 在上面的例子中，.container元素作为下拉容器，需要指定高度并设置overflow为auto或者scroll;
 
-```
+```css
 html,body{
   height: 100%;
   margin: 0;
@@ -57,18 +56,19 @@ html,body{
   height: 100%;
   overflow: auto;
 }
-
 .item{
-  height: 40px;
+  height: 60px;
   background-color: #eee;
-  margin-bottom: 3px;
+  margin-bottom: 1px;
 }
 ```
 
 ### 组件属性
 | 属性名                  | 值            |说明   |
 | ---------------------- | ------------- | ----- |
-| container| String | 下拉容器的querySelector选择器字符串，默认是当前父元素 |
+| container | String | 下拉容器的querySelector选择器字符串，默认是当前父元素 |
+| id | String | 会作为id属性附加到组件的DOM元素上 |
+| class | String | 会作为class属性附加到组件的DOM元素上，可用于自定义组件的样式 |
 | tip| String | 下拉露出的顶部区域的提示文字 |
 | threshold | Number | 下拉完成阈值，默认是200 |
 | sensitivity | Number | 下拉灵敏度，请传入0.1-1的数字，默认是0.4 |

@@ -1,7 +1,7 @@
 import React from 'react'
-import style from './index.css'
+import './index.css'
 
-export default class PullDown extends React.Component{
+class PullDown extends React.Component{
 
   constructor(props) {
 
@@ -30,7 +30,8 @@ export default class PullDown extends React.Component{
     return (
       <div
         ref="content"
-        className={style['pulldown']}
+        id={this.props.id || 'react-pulldown'}
+        className={'react-pulldown ' + this.props.class}
         onTouchStart={(e) => this.handleTouchStart(e)}
         onTouchMove={(e) => this.handleTouchMove(e)}
         onTouchEnd={(e) => this.handleTouchEnd(e)}
@@ -42,7 +43,7 @@ export default class PullDown extends React.Component{
           transform: 'translateZ(0)  translateY(' + this.state.offset / (1 / this.__sensitivity) + 'px)'
         }}
         >
-          <div className={style['pulldown-tip']}>{this.props.tip}</div>
+          <div className="react-pulldown-tip">{this.props.tip}</div>
           {this.props.children}
         </div>
     )
@@ -109,3 +110,5 @@ export default class PullDown extends React.Component{
   }
 
 }
+
+export default PullDown
